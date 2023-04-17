@@ -17,7 +17,6 @@ import com.example.newsapp.repository.NewsRepository
 import com.example.newsapp.ui.viewmodel.NewsViewModel
 import com.example.newsapp.ui.viewmodel.NewsViewModelProviderFactory
 import com.example.newsapp.util.Resource
-import kotlinx.android.synthetic.main.fragment_breaking_news.*
 
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
@@ -45,8 +44,6 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             findNavController().navigate(action)
         }
 
-        //binding.rvBreakingNews.setSc
-
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
                 is Resource.Success -> {
@@ -72,11 +69,11 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
     //TODO: Use bindingAdapters for progress bar
     private fun hideProgressBar() {
-        paginationProgressBar.visibility = View.INVISIBLE
+        fragmentBreakingNews!!.paginationProgressBar.visibility = View.INVISIBLE
     }
 
     private fun showProgressBar() {
-        paginationProgressBar.visibility = View.VISIBLE
+       fragmentBreakingNews!!.paginationProgressBar.visibility = View.VISIBLE
     }
 
     private fun setupRecyclerView(){

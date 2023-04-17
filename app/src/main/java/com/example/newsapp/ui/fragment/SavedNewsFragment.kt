@@ -12,13 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.R
 import com.example.newsapp.adapters.NewsAdapter
 import com.example.newsapp.data.db.ArticleDatabase
-import com.example.newsapp.databinding.FragmentArticleNewsBinding
 import com.example.newsapp.databinding.FragmentSavedNewsBinding
 import com.example.newsapp.repository.NewsRepository
 import com.example.newsapp.ui.viewmodel.NewsViewModel
 import com.example.newsapp.ui.viewmodel.NewsViewModelProviderFactory
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_saved_news.*
 
 class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
 

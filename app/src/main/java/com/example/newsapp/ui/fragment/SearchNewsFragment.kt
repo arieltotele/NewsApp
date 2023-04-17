@@ -1,7 +1,6 @@
 package com.example.newsapp.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
@@ -19,7 +18,6 @@ import com.example.newsapp.ui.viewmodel.NewsViewModel
 import com.example.newsapp.ui.viewmodel.NewsViewModelProviderFactory
 import com.example.newsapp.util.Constants
 import com.example.newsapp.util.Resource
-import kotlinx.android.synthetic.main.fragment_search_news.*
 import kotlinx.coroutines.*
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
@@ -47,7 +45,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         var job: Job? = null
 
         //TODO: Manage the onChangeListener with viewBinding or dataBinding
-        etSearch.addTextChangedListener { searchText ->
+        fragmentSearchNewsFragment.etSearch.addTextChangedListener { searchText ->
             job?.cancel()
             job = MainScope().launch {
                 delay(Constants.TIME_SEARCH_NEWS_DELAY)
@@ -81,11 +79,11 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
     //TODO: Use bindingAdapters for progress bar
     private fun hideProgressBar() {
-        paginationProgressBar.visibility = View.INVISIBLE
+        fragmentSearchNewsFragment.paginationProgressBar.visibility = View.INVISIBLE
     }
 
     private fun showProgressBar() {
-        paginationProgressBar.visibility = View.VISIBLE
+       fragmentSearchNewsFragment.paginationProgressBar.visibility = View.VISIBLE
     }
 
     private fun setupRecyclerView() {

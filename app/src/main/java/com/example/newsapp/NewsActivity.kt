@@ -2,13 +2,12 @@ package com.example.newsapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.newsapp.data.db.ArticleDatabase
 import com.example.newsapp.repository.NewsRepository
 import com.example.newsapp.ui.viewmodel.NewsViewModel
 import com.example.newsapp.ui.viewmodel.NewsViewModelProviderFactory
-import kotlinx.android.synthetic.main.activity_news.*
 import com.example.newsapp.databinding.ActivityNewsBinding
 
 class NewsActivity : AppCompatActivity() {
@@ -26,7 +25,10 @@ class NewsActivity : AppCompatActivity() {
         val viewModelProviderFactory = NewsViewModelProviderFactory(application, newsRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory)[NewsViewModel::class.java]
 
-        binding.bottomNavigationView.setupWithNavController(newsNavHosFragment.findNavController())
     }
 
+    override fun onStart() {
+        super.onStart()
+        binding.bottomNavigationView.setupWithNavController(binding.newsNavHostFragment.findNavController())
+    }
 }
